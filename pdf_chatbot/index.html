@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Chatbot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div class="logo">PDF</div>
+      <h1>PDF Chatbot</h1>
+      <p>Ask questions and get answers from your documents.</p>
+      <span class="privacy">Answers based on your uploaded document</span>
+    </header>
+
+    <section class="panel">
+      <div class="section-title">
+        <span class="step">1</span>
+        <div>
+          <h2>Upload document</h2>
+          <p>Select a PDF to get started.</p>
+        </div>
+      </div>
+
+      <label class="upload-area" for="pdfFile">
+        <span class="upload-icon">↑</span>
+        <strong id="fileLabel">Choose a PDF file</strong>
+        <span>Click to browse · PDF only</span>
+        <input id="pdfFile" type="file"
+               accept=".pdf,application/pdf">
+      </label>
+
+      <div id="fileInfo" class="file-info hidden">
+        <span class="pdf-icon">PDF</span>
+        <div class="file-details">
+          <strong id="fileName"></strong>
+          <span id="fileSize"></span>
+        </div>
+        <button id="removeFile" class="remove-btn"
+                type="button" aria-label="Remove PDF">×</button>
+      </div>
+
+      <button id="uploadBtn" class="btn btn-primary"
+              type="button" disabled>
+        Upload and process PDF
+      </button>
+
+      <div id="uploadStatus" class="status hidden"
+           role="status"></div>
+    </section>
+
+    <section class="panel chat-panel">
+      <div class="section-title">
+        <span class="step">2</span>
+        <div>
+          <h2>Ask your document</h2>
+          <p>Ask a question about the content of your PDF.</p>
+        </div>
+      </div>
+
+      <div id="chatMessages" class="chat-messages">
+        <div class="welcome">
+          <div class="welcome-icon"></div>
+          <h3>Your document assistant</h3>
+          <p>Upload a PDF, then ask a question to find
+             information in your document.</p>
+        </div>
+      </div>
+
+      <form id="questionForm" class="question-form">
+        <textarea id="question" rows="2"
+          placeholder="Ask something about your PDF..."
+          aria-label="Your question" disabled></textarea>
+        <button id="askBtn" class="btn btn-dark"
+                type="submit" disabled>
+          Ask AI <span>↑</span>
+        </button>
+      </form>
+
+      <p class="hint">Press Enter to send · Shift + Enter for a new line</p>
+    </section>
+
+
+  </main>
+
+  <script src="./script.js?v=3" defer></script>
+</body>
+</html>

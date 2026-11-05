@@ -1,0 +1,414 @@
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #2563eb;
+  --text: #172033;
+  --muted: #718096;
+  --border: #e2e8f0;
+  --background: #f5f7fb;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background: var(--background);
+  line-height: 1.5;
+}
+
+button, textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled,
+textarea:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.app {
+  width: min(100% - 32px, 720px);
+  margin: 0 auto;
+  padding: 42px 0 24px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.logo {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 12px;
+  border-radius: 16px;
+  background: #e8efff;
+  color: var(--primary);
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: clamp(27px, 5vw, 35px);
+  letter-spacing: -1px;
+}
+
+.header p {
+  color: var(--muted);
+  margin: 8px 0 12px;
+}
+
+.privacy {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: #eaf8ef;
+  color: #237a46;
+  font-size: 12px;
+}
+
+.panel {
+  padding: 24px;
+  margin-bottom: 18px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 5px 24px rgba(15, 23, 42, 0.035);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.step {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: #edf2ff;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.section-title h2 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.section-title p {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding: 25px 12px;
+  border: 1.5px dashed #cbd5e1;
+  border-radius: 12px;
+  background: #fafcff;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.upload-area:hover {
+  border-color: var(--primary);
+  background: #f5f8ff;
+}
+
+.upload-area strong {
+  font-size: 14px;
+}
+
+.upload-area > span:last-of-type {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.upload-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #e8efff;
+  color: var(--primary);
+  font-size: 25px;
+}
+
+#pdfFile {
+  display: none;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  margin-top: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.pdf-icon {
+  padding: 8px;
+  border-radius: 7px;
+  background: #fff0f0;
+  color: #c24141;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.file-details {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.file-details strong {
+  overflow-wrap: anywhere;
+  font-size: 13px;
+}
+
+.file-details span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.remove-btn {
+  border: 0;
+  background: none;
+  color: #64748b;
+  font-size: 24px;
+}
+
+.btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 16px;
+  border: 0;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.btn-primary {
+  margin-top: 14px;
+  color: white;
+  background: var(--primary);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.btn-dark {
+  width: auto;
+  min-width: 110px;
+  color: white;
+  background: #172033;
+}
+
+.btn-dark:hover:not(:disabled) {
+  background: #334155;
+}
+
+.status {
+  padding: 10px 12px;
+  margin-top: 12px;
+  border-radius: 9px;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.status.success {
+  background: #eaf8ef;
+  color: #237a46;
+}
+
+.status.error {
+  background: #fff0f0;
+  color: #b42318;
+}
+
+.status.loading {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.chat-panel {
+  padding-bottom: 18px;
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-height: 220px;
+  max-height: 480px;
+  padding: 8px 0 18px;
+  overflow-y: auto;
+}
+
+.welcome {
+  margin: auto;
+  max-width: 340px;
+  padding: 24px 12px;
+  text-align: center;
+}
+
+.welcome-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 12px;
+  border-radius: 14px;
+  background: #edf2ff;
+  color: var(--primary);
+  font-size: 25px;
+}
+
+.welcome h3 {
+  margin: 0 0 7px;
+  font-size: 16px;
+}
+
+.welcome p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.message {
+  max-width: 92%;
+  padding: 13px 15px;
+  border-radius: 13px;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.message.user {
+  align-self: flex-end;
+  background: #eaf0ff;
+  border-bottom-right-radius: 4px;
+}
+
+.message.assistant {
+  align-self: flex-start;
+  width: 100%;
+  background: #f7f8fa;
+  border: 1px solid #edf0f4;
+  border-bottom-left-radius: 4px;
+}
+
+.message-label {
+  margin-bottom: 6px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.source-pages {
+  padding-top: 10px;
+  margin-top: 12px;
+  border-top: 1px solid var(--border);
+  color: #64748b;
+  font-size: 12px;
+}
+
+.question-form {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: #fff;
+}
+
+.question-form:focus-within {
+  border-color: #93b4ff;
+  box-shadow: 0 0 0 3px #eaf0ff;
+}
+
+.question-form textarea {
+  flex: 1;
+  min-width: 0;
+  resize: vertical;
+  min-height: 48px;
+  max-height: 150px;
+  padding: 10px 5px;
+  border: 0;
+  outline: none;
+  color: var(--text);
+  background: transparent;
+}
+
+.question-form textarea::placeholder {
+  color: #94a3b8;
+}
+
+.hint {
+  margin: 10px 0 0;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+footer {
+  padding-top: 8px;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+@media (max-width: 480px) {
+  .app {
+    width: min(100% - 20px, 720px);
+    padding-top: 26px;
+  }
+
+  .panel {
+    padding: 17px;
+    border-radius: 14px;
+  }
+
+  .question-form {
+    flex-wrap: wrap;
+  }
+
+  .btn-dark {
+    width: 100%;
+  }
+}
