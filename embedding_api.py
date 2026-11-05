@@ -18,7 +18,7 @@ from sentence_transformers import SentenceTransformer
 
 # ---------------- Configuration ----------------
 
-MODEL_NAME = os.getenv("EMBEDDING_MODEL", "google/embeddinggemma-2")
+MODEL_NAME = os.getenv("EMBEDDING_MODEL", "")
 DEVICE = os.getenv("EMBEDDING_DEVICE", "cuda")
 PORT = int(os.getenv("PORT", "6885"))
 
